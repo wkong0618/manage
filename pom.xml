@@ -38,7 +38,7 @@
         <manage.version>0.0.1-SNAPSHOT</manage.version>
         <swagger.version>2.8.0</swagger.version>
         <jackson.version>2.9.4</jackson.version>
-        <jackson-databind.version>2.9.10.3</jackson-databind.version>
+        <jackson-databind.version>2.10.3</jackson-databind.version>
         <curator.version>2.6.0</curator.version>
         <commons-io.version>2.4</commons-io.version>
     </properties>
