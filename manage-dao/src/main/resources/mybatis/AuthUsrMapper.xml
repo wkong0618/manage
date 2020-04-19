@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wk.manage.dao.mapper.AuthUsrMapper">
+  <resultMap id="BaseResultMap" type="com.wk.manage.dao.entity.AuthUsr">
+    <id column="USR_ID" jdbcType="VARCHAR" property="usrId" />
+    <result column="ORG_ID" jdbcType="VARCHAR" property="orgId" />
+    <result column="USR_NAME" jdbcType="VARCHAR" property="usrName" />
+    <result column="USR_PSW" jdbcType="VARCHAR" property="usrPsw" />
+    <result column="USR_REAL_NAME" jdbcType="VARCHAR" property="usrRealName" />
+    <result column="USR_DESC" jdbcType="VARCHAR" property="usrDesc" />
+    <result column="USR_STATUS" jdbcType="CHAR" property="usrStatus" />
+    <result column="LAST_LOGIN_TIME" jdbcType="CHAR" property="lastLoginTime" />
+    <result column="FAIL_LOGIN_TIMES" jdbcType="VARCHAR" property="failLoginTimes" />
+    <result column="CRE_OBJ" jdbcType="VARCHAR" property="creObj" />
+    <result column="CRE_TIM" jdbcType="CHAR" property="creTim" />
+    <result column="UPD_OBJ" jdbcType="VARCHAR" property="updObj" />
+    <result column="UPD_TIM" jdbcType="CHAR" property="updTim" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USR_ID, ORG_ID, USR_NAME, USR_PSW, USR_REAL_NAME, USR_DESC, USR_STATUS, LAST_LOGIN_TIME, 
+    FAIL_LOGIN_TIMES, CRE_OBJ, CRE_TIM, UPD_OBJ, UPD_TIM
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from auth_usr
+    where USR_ID = #{usrId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from auth_usr
+    where USR_ID = #{usrId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wk.manage.dao.entity.AuthUsr">
+    insert into auth_usr (USR_ID, ORG_ID, USR_NAME, 
+      USR_PSW, USR_REAL_NAME, USR_DESC, 
+      USR_STATUS, LAST_LOGIN_TIME, FAIL_LOGIN_TIMES, 
+      CRE_OBJ, CRE_TIM, UPD_OBJ, 
+      UPD_TIM)
+    values (#{usrId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{usrName,jdbcType=VARCHAR}, 
+      #{usrPsw,jdbcType=VARCHAR}, #{usrRealName,jdbcType=VARCHAR}, #{usrDesc,jdbcType=VARCHAR}, 
+      #{usrStatus,jdbcType=CHAR}, #{lastLoginTime,jdbcType=CHAR}, #{failLoginTimes,jdbcType=VARCHAR}, 
+      #{creObj,jdbcType=VARCHAR}, #{creTim,jdbcType=CHAR}, #{updObj,jdbcType=VARCHAR}, 
+      #{updTim,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wk.manage.dao.entity.AuthUsr">
+    insert into auth_usr
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usrId != null">
+        USR_ID,
+      </if>
+      <if test="orgId != null">
+        ORG_ID,
+      </if>
+      <if test="usrName != null">
+        USR_NAME,
+      </if>
+      <if test="usrPsw != null">
+        USR_PSW,
+      </if>
+      <if test="usrRealName != null">
+        USR_REAL_NAME,
+      </if>
+      <if test="usrDesc != null">
+        USR_DESC,
+      </if>
+      <if test="usrStatus != null">
+        USR_STATUS,
+      </if>
+      <if test="lastLoginTime != null">
+        LAST_LOGIN_TIME,
+      </if>
+      <if test="failLoginTimes != null">
+        FAIL_LOGIN_TIMES,
+      </if>
+      <if test="creObj != null">
+        CRE_OBJ,
+      </if>
+      <if test="creTim != null">
+        CRE_TIM,
+      </if>
+      <if test="updObj != null">
+        UPD_OBJ,
+      </if>
+      <if test="updTim != null">
+        UPD_TIM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usrId != null">
+        #{usrId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="usrName != null">
+        #{usrName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrPsw != null">
+        #{usrPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="usrRealName != null">
+        #{usrRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrDesc != null">
+        #{usrDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="usrStatus != null">
+        #{usrStatus,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=CHAR},
+      </if>
+      <if test="failLoginTimes != null">
+        #{failLoginTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="creObj != null">
+        #{creObj,jdbcType=VARCHAR},
+      </if>
+      <if test="creTim != null">
+        #{creTim,jdbcType=CHAR},
+      </if>
+      <if test="updObj != null">
+        #{updObj,jdbcType=VARCHAR},
+      </if>
+      <if test="updTim != null">
+        #{updTim,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wk.manage.dao.entity.AuthUsr">
+    update auth_usr
+    <set>
+      <if test="orgId != null">
+        ORG_ID = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="usrName != null">
+        USR_NAME = #{usrName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrPsw != null">
+        USR_PSW = #{usrPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="usrRealName != null">
+        USR_REAL_NAME = #{usrRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrDesc != null">
+        USR_DESC = #{usrDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="usrStatus != null">
+        USR_STATUS = #{usrStatus,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=CHAR},
+      </if>
+      <if test="failLoginTimes != null">
+        FAIL_LOGIN_TIMES = #{failLoginTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="creObj != null">
+        CRE_OBJ = #{creObj,jdbcType=VARCHAR},
+      </if>
+      <if test="creTim != null">
+        CRE_TIM = #{creTim,jdbcType=CHAR},
+      </if>
+      <if test="updObj != null">
+        UPD_OBJ = #{updObj,jdbcType=VARCHAR},
+      </if>
+      <if test="updTim != null">
+        UPD_TIM = #{updTim,jdbcType=CHAR},
+      </if>
+    </set>
+    where USR_ID = #{usrId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wk.manage.dao.entity.AuthUsr">
+    update auth_usr
+    set ORG_ID = #{orgId,jdbcType=VARCHAR},
+      USR_NAME = #{usrName,jdbcType=VARCHAR},
+      USR_PSW = #{usrPsw,jdbcType=VARCHAR},
+      USR_REAL_NAME = #{usrRealName,jdbcType=VARCHAR},
+      USR_DESC = #{usrDesc,jdbcType=VARCHAR},
+      USR_STATUS = #{usrStatus,jdbcType=CHAR},
+      LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=CHAR},
+      FAIL_LOGIN_TIMES = #{failLoginTimes,jdbcType=VARCHAR},
+      CRE_OBJ = #{creObj,jdbcType=VARCHAR},
+      CRE_TIM = #{creTim,jdbcType=CHAR},
+      UPD_OBJ = #{updObj,jdbcType=VARCHAR},
+      UPD_TIM = #{updTim,jdbcType=CHAR}
+    where USR_ID = #{usrId,jdbcType=VARCHAR}
+  </update>
+</mapper>
