@@ -33,22 +33,5 @@ public class DemoServiceImpl implements DemoService {
     public String test() {
         String cc = rpcIdGen.get("1");
         return cc;
-       /* String requireToken = distributedLock.acquire(CacheKeysEnum.TEST.key(), 60000);
-        distributedLock.release(CacheKeysEnum.TEST.key(), requireToken);
-        String serialNo = redisIdHelper.generateSerialNo(CacheKeysEnum.TEST.key(), "", "");
-        log.info("generate serialNo:{}", serialNo);
-        return authUsrMapper.selectByPrimaryKey("160825000001").getUsrName();*/
-    }
-
-    public static void main(String[] args) {
-        List<AuthProtocolInfo> authProtocolInfos = new ArrayList<>();
-        AuthProtocolInfo a = new AuthProtocolInfo();
-        a.setBindCardTime("1578918820");
-        AuthProtocolInfo b = new AuthProtocolInfo();
-        b.setBindCardTime("1578917970");
-        authProtocolInfos.add(a);
-        authProtocolInfos.add(b);
-        authProtocolInfos.sort((item1, item2) -> new BigDecimal(item2.getBindCardTime()).compareTo(new BigDecimal(item1.getBindCardTime())));
-        System.out.printf(authProtocolInfos.get(0).getBindCardTime());
     }
 }

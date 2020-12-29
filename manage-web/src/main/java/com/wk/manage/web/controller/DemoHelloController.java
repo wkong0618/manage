@@ -1,6 +1,7 @@
 package com.wk.manage.web.controller;
 
 import com.wk.manage.biz.service.DemoService;
+import com.wk.manage.common.bloom.RedisBloomTest;
 import com.wk.manage.common.redis.CacheTime;
 import com.wk.manage.common.redis.RedisClient;
 import io.swagger.annotations.Api;
@@ -20,9 +21,13 @@ public class DemoHelloController {
     @Autowired
     RedisClient redisClient;
 
+    @Autowired
+    RedisBloomTest redisBloomTest;
+
     @GetMapping("test")
     @ApiOperation("test")
     public String test(){
+        redisBloomTest.test();
         String k = demoService.test();
         redisClient.set("user:1", k, CacheTime.CACHE_EXP_MINUTE);
         System.out.println(redisClient.get("user:1").toString());
