@@ -55,7 +55,7 @@ public class SnowflakeIDGenImpl implements IDGen {
             workerId = holder.getWorkerID();
             LOGGER.info("START SUCCESS USE ZK WORKERID-{}", workerId);
         } else {
-            Preconditions.checkArgument(initFlag, "Snowflake Id Gen is not init ok");
+            throw new IllegalArgumentException("Snowflake Id Gen is not init ok");
         }
         Preconditions.checkArgument(workerId >= 0 && workerId <= maxWorkerId, "workerID must gte 0 and lte 1023");
     }
@@ -111,12 +111,6 @@ public class SnowflakeIDGenImpl implements IDGen {
 
     public long getWorkerId() {
         return workerId;
-    }
-
-    public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>(10);
-        list.set(0,1);
-        System.out.printf(list.get(0).toString());
     }
 
 }

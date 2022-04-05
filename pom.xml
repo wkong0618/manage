@@ -37,10 +37,9 @@
         <java.version>1.8</java.version>
         <manage.version>0.0.1-SNAPSHOT</manage.version>
         <swagger.version>2.8.0</swagger.version>
-        <jackson.version>2.10.3</jackson.version>
-        <jackson-databind.version>2.10.3</jackson-databind.version>
+        <jackson.version>2.13.2</jackson.version>
         <curator.version>2.6.0</curator.version>
-        <commons-io.version>2.4</commons-io.version>
+        <commons-io.version>2.5</commons-io.version>
     </properties>
 
     <!--统一管理依赖版本号-->
@@ -141,7 +140,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>23.0</version>
+                <version>31.1-jre</version>
             </dependency>
 
             <!--zk-->
